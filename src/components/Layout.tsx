@@ -43,11 +43,12 @@ export const Layout = ({ children }: ILayout) => {
             backgroundColor={'$background'}
             width={'75%'}
             height={'100%'}
-            animation={'slow'}
+            animation={'quick'}
             x={0}
             exitStyle={{ x: -1000 }}
             enterStyle={{ x: -1000 }}
             zi={5000}
+            style={{ opacity: 0.9 }}
           >
             <Paragraph minWidth={200} bbc={'$borderColor'}>
               Menu
