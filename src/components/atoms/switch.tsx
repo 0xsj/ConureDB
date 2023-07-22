@@ -1,16 +1,27 @@
 import React from 'react';
-import { Switch as NativeSwitch } from 'tamagui';
+import {
+  Switch as NativeSwitch,
+  SwitchProps as NativeSwitchProps
+} from 'tamagui';
 
-interface SwitchProps {
+type SwitchProps = NativeSwitchProps & {
   thumbColor?: string;
   backgroundColor?: string;
-}
+};
 
 export const Switch: React.FC<SwitchProps> = props => {
-  const { thumbColor, backgroundColor, ...rest } = props;
+  const { ...rest } = props;
   return (
-    <NativeSwitch backgroundColor={backgroundColor} {...rest}>
-      <NativeSwitch.Thumb animation={'quick'} backgroundColor={thumbColor} />
+    <NativeSwitch
+      borderRadius={'$10'}
+      alignItems="center"
+      backgroundColor={'#e0dcdc'}
+      {...rest}
+    >
+      <NativeSwitch.Thumb
+        animation={'quick'}
+        style={{ backgroundColor: '#ACACAC' }}
+      />
     </NativeSwitch>
   );
 };

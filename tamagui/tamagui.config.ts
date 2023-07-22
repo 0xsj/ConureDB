@@ -8,7 +8,7 @@ import fonts from './fonts';
 
 const appConfig = createTamagui({
   shouldAddPrefersColorThemes: true,
-  // themeClassNameOnRoot: true,
+  themeClassNameOnRoot: true,
   animations,
   fonts,
   shorthands,

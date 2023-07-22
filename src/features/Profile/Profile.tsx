@@ -6,12 +6,11 @@ import {
   Separator,
   Sheet,
   XStack,
-  YStack,
-  Switch
+  YStack
 } from 'tamagui';
 import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons';
 import { useLink } from 'solito/link';
-import { Box } from '../../components/atoms';
+import { Box, Switch } from '../../components/atoms';
 
 export function Profile() {
   const linkProps = useLink({
@@ -33,13 +32,7 @@ export function Profile() {
         <Button {...linkProps}>Link to user</Button>
       </XStack>
       <Box flexDirection={'column'}>
-        <Switch
-          onCheckedChange={() => {
-            return console.log('1111');
-          }}
-        >
-          <Switch.Thumb animation={'bouncy'} />
-        </Switch>
+        <Switch backgroundColor="red" thumbColor="blue" />
       </Box>
 
       <SheetDemo />
