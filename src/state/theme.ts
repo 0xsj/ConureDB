@@ -1,9 +1,12 @@
-import { atom } from 'jotai';
+// state/theme.ts
+import { atom, useAtom } from 'jotai';
 
-// Define the atom to store the active theme
-export const activeThemeAtom = atom('light');
+export const themeAtom = atom<'light' | 'dark'>('light');
 
-// Create a function to toggle the theme
-export const toggleTheme = currentTheme => {
-  return currentTheme === 'light' ? 'dark' : 'light';
-};
+export function useThemeToggle() {
+  const [theme, setTheme] = useAtom(themeAtom);
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+  return { theme, toggleTheme };
+}

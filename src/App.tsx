@@ -27,7 +27,8 @@ import { tamaguiFonts } from '../tamagui/tamaguiFonts.native';
 import { Profile } from './features/Profile';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useAtom } from 'jotai';
-import { activeThemeAtom } from './state/theme';
+import { useThemeToggle } from './state/theme';
+
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -121,8 +122,7 @@ const InnerApp = () => {
 };
 
 const App = () => {
-  const theme = useColorScheme() || 'light';
-  const [activeTheme] = useAtom(activeThemeAtom);
+  const { theme } = useThemeToggle();
   const [loaded] = useFonts(tamaguiFonts);
 
   if (!loaded) {
@@ -131,11 +131,7 @@ const App = () => {
 
   return (
     <SolitoImageProvider>
-      <TamaguiProvider
-        config={config}
-        disableInjectCSS
-        defaultTheme={activeTheme}
-      >
+      <TamaguiProvider config={config} disableInjectCSS defaultTheme={theme}>
         <InnerApp />
       </TamaguiProvider>
     </SolitoImageProvider>

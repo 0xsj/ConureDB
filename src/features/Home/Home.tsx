@@ -13,14 +13,12 @@ import {
 import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons';
 import { useLink } from 'solito/link';
 import { Box, Switch } from '../../components/atoms';
-import { useColorScheme } from 'react-native';
-import { activeThemeAtom, toggleTheme } from '../../state/theme';
-import { useAtom } from 'jotai';
+import { useThemeToggle } from '../../state/theme';
 
 export function Home() {
-  const theme = useColorScheme() || 'light';
+  const { theme, toggleTheme } = useThemeToggle(); // Use the theme toggle hook
   const [currentTheme] = useState(theme);
-  const [activeTheme, setActiveTheme] = useAtom(activeThemeAtom);
+
   const linkProps = useLink({
     href: '/user/nate'
   });
@@ -69,10 +67,10 @@ export function Home() {
       <Box flexDirection={'column'}>
         <XStack width={200} alignItems="center" space="$4">
           <Label paddingRight="$0" minWidth={90} justifyContent="flex-end">
-            {`Active Theme: ${activeTheme}`}
+            {`Active Theme: ${theme}`}
           </Label>
           <Separator minHeight={20} vertical />
-          <Switch onCheckedChange={() => setActiveTheme(toggleTheme)} />
+          <Switch onCheckedChange={toggleTheme} />
         </XStack>
       </Box>
 
