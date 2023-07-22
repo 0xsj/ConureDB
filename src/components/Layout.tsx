@@ -41,7 +41,7 @@ export const Layout = ({ children }: ILayout) => {
             onPress={toggleMenu}
             position={'absolute'}
             backgroundColor={'$background'}
-            width={'75%'}
+            width={'100%'}
             height={'100%'}
             animation={'quick'}
             x={0}
@@ -50,9 +50,9 @@ export const Layout = ({ children }: ILayout) => {
             zi={5000}
             style={{ opacity: 0.9 }}
           >
-            <Paragraph minWidth={200} bbc={'$borderColor'}>
-              Menu
-            </Paragraph>
+            <YStack flex={1} justifyContent="center" alignItems="center">
+              <Paragraph bbc={'$borderColor'}>Menu</Paragraph>
+            </YStack>
           </YStack>
         )}
       </AnimatePresence>
