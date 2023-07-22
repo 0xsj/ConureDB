@@ -50,9 +50,12 @@ export const Layout = ({ children }: ILayout) => {
             zi={5000}
             style={{ opacity: 0.9 }}
           >
-            <YStack flex={1} justifyContent="center" alignItems="center">
-              <Paragraph bbc={'$borderColor'}>Menu</Paragraph>
-            </YStack>
+            {
+              // menu container
+              <YStack flex={1} justifyContent="center" alignItems="center">
+                <Paragraph bbc={'$borderColor'}>Menu</Paragraph>
+              </YStack>
+            }
           </YStack>
         )}
       </AnimatePresence>
