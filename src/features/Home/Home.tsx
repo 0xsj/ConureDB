@@ -1,59 +1,28 @@
-import {
-  Anchor,
-  Button,
-  H1,
-  Paragraph,
-  Separator,
-  XStack,
-  YStack
-} from 'tamagui';
-import { useLink } from 'solito/link';
-import { BottomSheet } from '../../components/organisms';
+import { H1, ScrollView, Separator, Square, XStack, YStack } from 'tamagui';
+import { Box } from '../../components/atoms';
 
 export function Home() {
-  const linkProps = useLink({
-    href: '/user/nate'
-  });
-
   return (
-    <YStack
-      backgroundColor={'$background'}
-      f={1}
-      jc="center"
-      ai="center"
-      p="$4"
-      space
-    >
-      <YStack space="$4" maw={600}>
+    <YStack backgroundColor={'$background'} f={1} ai="center" p="$4" space>
+      <YStack space="$4" maw={600} pt={50}>
         <H1 ta="center" fontFamily={'$silkscreen'}>
-          Hello World.
+          Messages
         </H1>
-        <Paragraph ta="center">Next + React Native</Paragraph>
 
         <Separator />
-        <Paragraph ta="center">
-          <Anchor
-            color="$color12"
-            href="https://twitter.com/natebirdman"
-            target="_blank"
-          >
-            @0xsj
-          </Anchor>
-          <Anchor
-            color="$color12"
-            href="https://github.com/tamagui/tamagui"
-            target="_blank"
-            rel="noreferrer"
-          >
-            ⭐️
-          </Anchor>
-        </Paragraph>
       </YStack>
-
-      <XStack>
-        <Button {...linkProps}>Link to user</Button>
-      </XStack>
-      <BottomSheet />
+      <Box flexDirection={'column'}>
+        <ScrollView
+          width="75%"
+          backgroundColor="$background"
+          padding="$4"
+          borderRadius="$4"
+        >
+          <XStack flexWrap="wrap" alignItems="center" justifyContent="center">
+            <Square margin="$4" size={120} backgroundColor="$red9" />
+          </XStack>
+        </ScrollView>
+      </Box>
     </YStack>
   );
 }
