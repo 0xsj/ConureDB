@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { StyleSheet, StatusBar, useColorScheme } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { TamaguiProvider, useTheme, Stack, H4 } from 'tamagui';
+import { TamaguiProvider, useTheme, Stack, H4, Button } from 'tamagui';
 import { SolitoImageProvider } from 'solito/image';
 import {
   initialWindowMetrics,
@@ -28,9 +28,32 @@ import { Profile } from './features/Profile';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useAtom } from 'jotai';
 import { useThemeToggle, themeAtom } from './state/theme';
+import { Search, Plus, Settings } from '@tamagui/lucide-icons';
+import { CustomTabBar } from './components/custom-tab';
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
+
+const routes = [
+  {
+    key: 'home',
+    name: 'Home',
+    component: Home,
+    icon: Search
+  },
+  {
+    key: 'Add',
+    name: 'Add',
+    component: Profile,
+    icon: Plus
+  },
+  {
+    key: 'profile',
+    name: 'Profile',
+    component: Profile,
+    icon: Settings
+  }
+];
 
 const Header = ({ route }: DrawerHeaderProps) => {
   const theme = useTheme();
@@ -53,14 +76,17 @@ const screenOptions: DrawerNavigationOptions = {
 
 const BottomTabNavigator = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{ headerShown: false }}
-      />
-      <Tab.Screen name="Explore" component={Profile} />
-      <Tab.Screen name="Profile" component={Profile} />
+    <Tab.Navigator tabBar={props => <CustomTabBar {...props} />}>
+      {routes.map(route => (
+        <Tab.Screen
+          key={route.key}
+          name={route.name}
+          component={route.component}
+          options={{
+            headerShown: false
+          }}
+        />
+      ))}
     </Tab.Navigator>
   );
 };
