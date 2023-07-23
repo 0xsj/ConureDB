@@ -66,7 +66,7 @@ export function Home() {
       </XStack>
       <Box flexDirection={'column'}>
         <XStack width={200} alignItems="center" space="$4">
-          <Label paddingRight="$0" minWidth={90} justifyContent="flex-end">
+          <Label paddingRight="$0" justifyContent="flex-end">
             {`Active Theme: ${theme}`}
           </Label>
           <Separator minHeight={20} vertical />

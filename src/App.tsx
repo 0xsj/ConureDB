@@ -103,9 +103,8 @@ const linking = {
 };
 
 const InnerApp = () => {
-  const colorScheme = useColorScheme() || 'light';
-  const isDarkMode = colorScheme === 'dark';
   const { theme } = useThemeToggle();
+  const isDarkMode = theme === 'dark';
   console.log('APP.tsx: ', theme);
 
   return (
