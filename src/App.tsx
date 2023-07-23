@@ -26,6 +26,8 @@ import { useFonts } from 'expo-font';
 import { tamaguiFonts } from '../tamagui/tamaguiFonts.native';
 import { Profile } from './features/Profile';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useAtom } from 'jotai';
+import { useThemeToggle, themeAtom } from './state/theme';
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -52,8 +54,13 @@ const screenOptions: DrawerNavigationOptions = {
 const BottomTabNavigator = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Settings" component={Profile} />
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen name="Explore" component={Profile} />
+      <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
 };
@@ -96,16 +103,15 @@ const linking = {
 };
 
 const InnerApp = () => {
-  const colorScheme = useColorScheme() || 'light';
-  const isDarkMode = colorScheme === 'dark';
-  const theme = useTheme();
+  const { theme } = useThemeToggle();
+  const isDarkMode = theme === 'dark';
+  console.log('APP.tsx: ', theme);
 
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <GestureHandlerRootView style={styles.container}>
         <StatusBar
-          backgroundColor={theme.borderColor?.val}
-          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+          barStyle={theme === 'dark' ? 'light-content' : 'dark-content'}
         />
         <NavigationContainer
           theme={isDarkMode ? DarkTheme : DefaultTheme}
@@ -120,8 +126,7 @@ const InnerApp = () => {
 };
 
 const App = () => {
-  const theme = useColorScheme() || 'light';
-
+  const { theme } = useThemeToggle();
   const [loaded] = useFonts(tamaguiFonts);
 
   if (!loaded) {

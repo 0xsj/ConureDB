@@ -13,8 +13,9 @@ import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { TamaguiProvider } from 'tamagui';
-import { NextThemeProvider, useRootTheme } from '@tamagui/next-theme';
+import { NextThemeProvider } from '@tamagui/next-theme';
 import config from '../../tamagui';
+import { useThemeToggle } from '../state/theme';
 
 const insets = {
   top: 0,
@@ -33,12 +34,10 @@ const frame = {
 const initialMetrics = { insets, frame };
 
 const Providers = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useRootTheme();
-
-  console.log(theme);
-
+  const { theme, toggleTheme } = useThemeToggle();
+  console.log('NEXT APP: ', theme);
   return (
-    <NextThemeProvider onChangeTheme={setTheme}>
+    <NextThemeProvider onChangeTheme={toggleTheme}>
       <TamaguiProvider
         config={config}
         disableInjectCSS

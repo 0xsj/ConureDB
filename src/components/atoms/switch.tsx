@@ -1,16 +1,30 @@
 import React from 'react';
-import { Switch as NativeSwitch } from 'tamagui';
+import { SwitchProps as NativeSwitchProps } from 'tamagui';
+import { View, Switch as RNSWitch, StyleSheet } from 'react-native';
 
-interface SwitchProps {
-  thumbColor?: string;
-  backgroundColor?: string;
-}
+type SwitchProps = NativeSwitchProps & {
+  isEnabled: boolean;
+  onToggle: () => void;
+};
 
-export const Switch: React.FC<SwitchProps> = props => {
-  const { thumbColor, backgroundColor, ...rest } = props;
+export const Switch: React.FC<SwitchProps> = ({ isEnabled, onToggle }) => {
   return (
-    <NativeSwitch backgroundColor={backgroundColor} {...rest}>
-      <NativeSwitch.Thumb animation={'quick'} backgroundColor={thumbColor} />
-    </NativeSwitch>
+    <View style={styles.container}>
+      <RNSWitch
+        trackColor={{ false: '#ACACAC', true: '#2C66FF' }}
+        thumbColor={isEnabled ? '#fff' : '#fff'}
+        ios_backgroundColor="#ACACAC"
+        onValueChange={onToggle}
+        value={isEnabled}
+      />
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+});

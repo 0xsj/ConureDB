@@ -3,24 +3,37 @@ import {
   Anchor,
   Button,
   H1,
+  Label,
   Paragraph,
   Separator,
   Sheet,
   XStack,
-  YStack,
-  Switch
+  YStack
 } from 'tamagui';
 import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons';
 import { useLink } from 'solito/link';
-import { Box } from '../../components/atoms';
+import { Box, Switch } from '../../components/atoms';
+import { useThemeToggle } from '../../state/theme';
 
 export function Home() {
+  const { theme, toggleTheme } = useThemeToggle(); // Use the theme toggle hook
+  const [currentTheme] = useState(theme);
+
   const linkProps = useLink({
     href: '/user/nate'
   });
 
+  console.log(currentTheme);
+
   return (
-    <YStack f={1} jc="center" ai="center" p="$4" space>
+    <YStack
+      backgroundColor={'$background'}
+      f={1}
+      jc="center"
+      ai="center"
+      p="$4"
+      space
+    >
       <YStack space="$4" maw={600}>
         <H1 ta="center" fontFamily={'$silkscreen'}>
           Hello World.
@@ -52,13 +65,13 @@ export function Home() {
         <Button {...linkProps}>Link to user</Button>
       </XStack>
       <Box flexDirection={'column'}>
-        <Switch
-          onCheckedChange={() => {
-            return console.log('1111');
-          }}
-        >
-          <Switch.Thumb animation={'bouncy'} />
-        </Switch>
+        <XStack width={200} alignItems="center" space="$4">
+          <Label paddingRight="$0" justifyContent="flex-end">
+            {`Active Theme: ${theme}`}
+          </Label>
+          <Separator minHeight={20} vertical />
+          <Switch isEnabled={theme === 'dark'} onToggle={toggleTheme} />
+        </XStack>
       </Box>
 
       <SheetDemo />
