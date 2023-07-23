@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {
   Button,
   H1,
+  Label,
   Paragraph,
   Separator,
   Sheet,
@@ -11,8 +12,10 @@ import {
 import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons';
 import { useLink } from 'solito/link';
 import { Box, Switch } from '../../components/atoms';
+import { useThemeToggle } from '../../state/theme';
 
 export function Profile() {
+  const { theme, toggleTheme } = useThemeToggle(); // Use the theme toggle hook
   const linkProps = useLink({
     href: '/user/nate'
   });
@@ -32,7 +35,13 @@ export function Profile() {
         <Button {...linkProps}>Link to user</Button>
       </XStack>
       <Box flexDirection={'column'}>
-        <Switch backgroundColor="red" thumbColor="blue" />
+        <XStack width={200} alignItems="center" space="$4">
+          <Label paddingRight="$0" justifyContent="flex-end">
+            {`Active Theme: ${theme}`}
+          </Label>
+          <Separator minHeight={20} vertical />
+          <Switch isEnabled={theme === 'dark'} onToggle={toggleTheme} />
+        </XStack>
       </Box>
 
       <SheetDemo />
