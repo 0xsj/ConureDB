@@ -23,7 +23,7 @@ import config from '../tamagui';
 import { UserDetailScreen } from './features/DetailScreen';
 import { useFonts } from 'expo-font';
 import { tamaguiFonts } from '../tamagui/tamaguiFonts.native';
-import { Profile, Home, Messages, Notifications } from './features';
+import { Profile, Home } from './features';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useThemeToggle, themeAtom } from './state/theme';
@@ -47,12 +47,6 @@ const routes = [
     component: Home,
     icon: Search
   },
-  {
-    key: 'messages',
-    name: 'Messages',
-    component: Messages,
-    icon: MessageCircle
-  },
 
   {
     key: 'Add',
@@ -61,12 +55,6 @@ const routes = [
     icon: Plus
   },
 
-  {
-    key: 'notifications',
-    name: 'Notifications',
-    component: Notifications,
-    icon: Bell
-  },
   {
     key: 'profile',
     name: 'Profile',
