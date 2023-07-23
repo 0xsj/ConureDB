@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Search, Plus, Settings } from '@tamagui/lucide-icons';
 import { XStack } from 'tamagui';
+import { AddSheet } from './organisms';
 
 interface CustomTabBarProps {
   state?: any;
@@ -28,9 +29,29 @@ export const CustomTabBar: React.FC<CustomTabBarProps> = ({
         const { options } = descriptors[route.key];
         const label = options.tabBarLabel || route.name;
         const isFocused = state.index === index;
+
+        if (route.name === 'Add') {
+          return (
+            <TouchableOpacity
+              key={route.key}
+              style={styles.tabButton}
+              onPress={() => navigation.navigate(route.name)}
+            >
+              <AddSheet />
+              <Text
+                style={{
+                  color: isFocused ? '#007AFF' : 'grey',
+                  display: 'none'
+                }}
+              >
+                {label}
+              </Text>
+            </TouchableOpacity>
+          );
+        }
+
         //@ts-ignore
         const IconComponent = iconMap[route.name];
-
         return (
           <TouchableOpacity
             key={route.key}
