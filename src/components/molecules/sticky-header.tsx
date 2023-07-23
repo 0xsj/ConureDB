@@ -1,7 +1,6 @@
-import { Bell, MessageCircle, Menu } from '@tamagui/lucide-icons';
+import { Menu } from '@tamagui/lucide-icons';
 import { Button, XStack } from 'tamagui';
 import { Logo } from '../Logo';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export const StickyHeader = () => {
   return (
@@ -22,28 +21,6 @@ export const StickyHeader = () => {
             backgroundColor={''}
           />
           <Logo />
-        </XStack>
-        <XStack alignItems="center">
-          <TouchableOpacity style={{ width: 40, height: 40 }}>
-            <XStack
-              justifyContent="center"
-              alignItems="center"
-              alignContent="center"
-              flex={1}
-            >
-              <Bell />
-            </XStack>
-          </TouchableOpacity>
-          <TouchableOpacity style={{ width: 40, height: 40 }}>
-            <XStack
-              justifyContent="center"
-              alignItems="center"
-              alignContent="center"
-              flex={1}
-            >
-              <MessageCircle />
-            </XStack>
-          </TouchableOpacity>
         </XStack>
       </XStack>
     </XStack>

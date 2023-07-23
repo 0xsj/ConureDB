@@ -1,6 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Search, Plus, Settings } from '@tamagui/lucide-icons';
+import {
+  Search,
+  Plus,
+  Settings,
+  Bell,
+  MessageCircle
+} from '@tamagui/lucide-icons';
 import { XStack } from 'tamagui';
 import { AddSheet } from './organisms';
 
@@ -13,7 +19,9 @@ interface CustomTabBarProps {
 const iconMap = {
   Home: Search,
   Add: Plus,
-  Profile: Settings
+  Profile: Settings,
+  Messages: MessageCircle,
+  Notifications: Bell
 };
 
 export const CustomTabBar: React.FC<CustomTabBarProps> = ({

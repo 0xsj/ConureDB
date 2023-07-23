@@ -19,16 +19,21 @@ import {
   DrawerNavigationOptions,
   DrawerHeaderProps
 } from '@react-navigation/drawer';
-import { Home } from './features/Home';
 import config from '../tamagui';
 import { UserDetailScreen } from './features/DetailScreen';
 import { useFonts } from 'expo-font';
 import { tamaguiFonts } from '../tamagui/tamaguiFonts.native';
-import { Profile } from './features/Profile';
+import { Profile, Home, Messages, Notifications } from './features';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useAtom } from 'jotai';
 import { useThemeToggle, themeAtom } from './state/theme';
-import { Search, Plus, Settings } from '@tamagui/lucide-icons';
+import {
+  Search,
+  Plus,
+  Settings,
+  Bell,
+  MessageCircle
+} from '@tamagui/lucide-icons';
 import { CustomTabBar } from './components/custom-tab';
 import { StickyHeader } from './components/molecules';
 
@@ -43,10 +48,24 @@ const routes = [
     icon: Search
   },
   {
+    key: 'messages',
+    name: 'Messages',
+    component: Messages,
+    icon: MessageCircle
+  },
+
+  {
     key: 'Add',
     name: 'Add',
     component: Profile,
     icon: Plus
+  },
+
+  {
+    key: 'notifications',
+    name: 'Notifications',
+    component: Notifications,
+    icon: Bell
   },
   {
     key: 'profile',
