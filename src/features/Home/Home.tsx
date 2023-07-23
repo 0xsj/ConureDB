@@ -70,7 +70,7 @@ export function Home() {
             {`Active Theme: ${theme}`}
           </Label>
           <Separator minHeight={20} vertical />
-          <Switch onCheckedChange={toggleTheme} />
+          <Switch isEnabled={theme === 'dark'} onToggle={toggleTheme} />
         </XStack>
       </Box>
 
