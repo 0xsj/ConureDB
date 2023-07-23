@@ -30,6 +30,7 @@ import { useAtom } from 'jotai';
 import { useThemeToggle, themeAtom } from './state/theme';
 import { Search, Plus, Settings } from '@tamagui/lucide-icons';
 import { CustomTabBar } from './components/custom-tab';
+import { StickyHeader } from './components/molecules';
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -144,6 +145,7 @@ const InnerApp = () => {
           linking={linking}
         >
           {/* <TopTabNavigator /> */}
+          <StickyHeader />
           <BottomTabNavigator />
         </NavigationContainer>
       </GestureHandlerRootView>

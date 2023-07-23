@@ -1,43 +1,28 @@
-import { SolitoImage } from 'solito/image';
-import { useLink } from 'solito/link';
-import { Button, useMedia, useThemeName } from 'tamagui';
-import { tokens } from '@tamagui/themes';
-
-const logoMediaQuery = (size: keyof typeof tokens.size) => ({
-  width: tokens.size[size].val,
-  height: tokens.size[size].val
-});
+import { H2, XStack } from 'tamagui';
 
 export const Logo = () => {
-  const theme = useThemeName();
-  const media = useMedia();
-  const linkProps = useLink({
-    href: '/'
-  });
+  const logoSize = 30; // Adjust the size of the logo here
 
   return (
-    <Button
-      size={'$6'}
-      chromeless
-      focusStyle={{}}
-      icon={
-        <SolitoImage
-          priority
-          src={`/images/logo_${theme}.png`}
-          alt="logo"
-          resizeMode="contain"
-          sizes="(max-width: 600px) 400px,
-                 800px"
-          {...logoMediaQuery(8)}
-          {...((media.gtSm || media.gtMd) && {
-            ...logoMediaQuery(9)
-          })}
-          {...((media.gtLg || media.gtXl) && {
-            ...logoMediaQuery(10)
-          })}
-        />
-      }
-      {...linkProps}
-    />
+    <XStack
+      backgroundColor={'#2C66FF'}
+      width={logoSize}
+      height={logoSize}
+      borderRadius="50%"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <H2
+        alignSelf="center"
+        color={'#fff'}
+        fontFamily={'$silkscreen'}
+        textAlign="center"
+        position="absolute"
+        m={0}
+        p={0}
+      >
+        R
+      </H2>
+    </XStack>
   );
 };
