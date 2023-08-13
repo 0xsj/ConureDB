@@ -5,8 +5,11 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[features]
+tokio-rt = ["tokio", "sqlx/runtime-tokio-native-tls"]
+
 [dependencies]
-actix-web = "4.3"
+actix-web = { version = "4.3", default-features = false, features = ["macros"] }
 anyhow = "1.0.72"
 async-graphql = { version = "6.0.1" }
 async-graphql-actix-web = "6.0.1"
@@ -15,7 +18,8 @@ dotenv = "0.15.0"
 env_logger = "0.10.0"
 log = "0.4.14"
 serde = "1.0.136"
-sqlx = { version = "0.7.1", features = ["postgres"] }
+sqlx = { version = "0.7.0", features = ["postgres", "macros"] }
 uuid = { version = "1.4.1", features = ["serde", "v4"] }
 async-trait = "0.1.73"
 error = { path = "../library/error" }
+tokio = { version = "1.30.0", features = ["full"], optional = true }
