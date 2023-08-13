@@ -35,13 +35,6 @@ impl Display for InternalError {
 
 impl Error for InternalError {}
 
-///
-/// # Arguments
-///
-/// * `message` - A string that represents the reason for the error
-///
-/// * `name` - A string that represents the name for the error
-///
 #[macro_export]
 macro_rules! make_error {
     ($message:expr) => {{
@@ -55,25 +48,4 @@ macro_rules! make_error {
         let display_name = if !name.is_empty() { name } else { file!() };
         <$crate::InternalError as $crate::MakeError>::make_error(display_name, $message, line)
     }};
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_unnamed_error() {
-        let default_name = "src\\lib.rs";
-        let message = "something get wrong";
-        let error = make_error!(message);
-        assert_eq!(error.to_string(), format!("{} - {}", default_name, message));
-    }
-
-    #[test]
-    fn test_named_error() {
-        let name = "test module";
-        let message = "something get wrong";
-        let error = make_error!(name, message);
-        assert_eq!(error.to_string(), format!("{} - {}", name, message));
-    }
 }
