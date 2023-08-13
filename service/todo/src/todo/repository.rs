@@ -1,4 +1,5 @@
-use chrono::Utc;
+use anyhow::Ok;
+use chrono::prelude::*;
 use sqlx::{FromRow, PgPool};
 use uuid::Uuid;
 
@@ -7,7 +8,7 @@ pub struct TodoRow {
     pub id: Uuid,
     pub title: String,
     pub description: String,
-    pub created_at: chrono::NaiveDateTime,
+    pub created_at: Datat,
 }
 
 #[async_trait::async_trait]
@@ -27,31 +28,29 @@ impl TodoRepositoryImpl {
     }
 }
 
-// #[async_trait::async_trait]
-// impl TodoRepository for TodoRepositoryImpl {
-//     async fn create(&self, title: &str, description: &str) -> Result<TodoRow, sqlx::Error> {
-//         let created_at = Utc::now().naive_utc();
-//         let row = sqlx::query_as!(
-//             TodoRow,
-//             "INSERT INTO todos (id, title, description, created_at) VALUES ($1, $2, $3, $4) RETURNING *",
-//             Uuid::new_v4(),
-//             title,
-//             description,
-//             created_at,
-//         )
-//         .fetch_one(&self.pool)
-//         .await?;
+#[async_trait::async_trait]
+impl TodoRepository for TodoRepositoryImpl {
+    async fn create(&self, title: &str, description: &str) -> Result<TodoRow, sqlx::Error> {
+        let created_at = Utc::now().naive_utc();
+        let row = sqlx::query_as!(
+            TodoRow,
+            "INSERT INTO todo (id, title, description, created_at) VALUES ($1, $2, $3, $4) RETURNING *",
+            Uuid::new_v4(),
+            title,
+            description,
+            created_at,
+        )
+        .fetch_one(&self.pool)
+        .await?;
 
-//         Ok(row)
-//     }
+        Ok(row)
+    }
 
-//     async fn read(&self, id: Uuid) -> Result<Option<TodoRow>, sqlx::Error> {
-//         let row = sqlx::query_as!(TodoRow, "SELECT * FROM todos WHERE id = $1", id,)
-//             .fetch_optional(&self.pool)
-//             .await?;
+    async fn read(&self, id: Uuid) -> Result<Option<TodoRow>, sqlx::Error> {
+        let row = sqlx::query_as!(TodoRow, "SELECT * FROM todos WHERE id = $1", id,)
+            .fetch_optional(&self.pool)
+            .await?;
 
-//         Ok(row)
-//     }
-
-//     // Implement other methods for update, delete, and other operations as needed.
-// }
+        Ok(row)
+    }
+}
