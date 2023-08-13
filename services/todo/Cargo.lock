@@ -960,23 +960,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "gateway"
-version = "0.1.0"
-dependencies = [
- "actix-web",
- "anyhow",
- "async-graphql",
- "async-graphql-actix-web",
- "chrono",
- "dotenv",
- "env_logger",
- "log",
- "serde",
- "sqlx",
- "uuid",
-]
-
-[[package]]
 name = "generic-array"
 version = "0.14.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2296,6 +2279,23 @@ name = "tinyvec_macros"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1f3ccbac311fea05f86f61904b462b55fb3df8837a366dfc601a0161d0532f20"
+
+[[package]]
+name = "todo"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "anyhow",
+ "async-graphql",
+ "async-graphql-actix-web",
+ "chrono",
+ "dotenv",
+ "env_logger",
+ "log",
+ "serde",
+ "sqlx",
+ "uuid",
+]
 
 [[package]]
 name = "tokio"
