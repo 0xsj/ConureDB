@@ -3,11 +3,18 @@ kind: Config
 metadata:
   name: remarkable
 build:
+  tagPolicy:
+    sha256: {}
   artifacts:
     - image: gateway
       context: services/gateway
-      buildpacks:
-        builder: gcr.io/buildpacks/builder:v1
+    - image: currency
+      context: services/currency
 manifests:
   rawYaml:
-    - k8s/gateway.yaml
+    - services/currency/k8s/*
+    - services/gateway/k8s/*
+profiles:
+  - name: gcb
+    build:
+      googleCloudBuild: {}
