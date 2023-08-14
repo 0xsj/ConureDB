@@ -1,8 +1,13 @@
 apiVersion: skaffold/v4beta6
 kind: Config
+metadata:
+  name: remarkable
 build:
   artifacts:
     - image: gateway
-      context: services/gatewway
-    - image: currency
-      context: services/currency
+      context: services/gateway
+      buildpacks:
+        builder: gcr.io/buildpacks/builder:v1
+manifests:
+  rawYaml:
+    - k8s/gateway.yaml
