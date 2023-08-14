@@ -1,0 +1,8 @@
+apiVersion: skaffold/v4beta6
+kind: Config
+build:
+  artifacts:
+    - image: gateway
+      context: services/gatewway
+    - image: currency
+      context: services/currency
