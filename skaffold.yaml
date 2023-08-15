@@ -1,0 +1,20 @@
+apiVersion: skaffold/v4beta6
+kind: Config
+metadata:
+  name: remarkable
+build:
+  tagPolicy:
+    sha256: {}
+  artifacts:
+    - image: gateway
+      context: services/gateway
+    - image: currency
+      context: services/currency
+manifests:
+  rawYaml:
+    - services/currency/k8s/*
+    - services/gateway/k8s/*
+profiles:
+  - name: gcb
+    build:
+      googleCloudBuild: {}
