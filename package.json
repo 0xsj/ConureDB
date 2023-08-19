@@ -4,8 +4,6 @@
   "packageManager": "pnpm@7.13.0",
   "scripts": {
     "build": "turbo build",
-    "clean": "rm -rf node_modules",
-    "clean:workspaces": "turbo clean",
     "db-generate": "turbo db-generate",
     "db-push": "turbo db-push",
     "dev": "turbo dev --parallel",
