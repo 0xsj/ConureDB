@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Todo {
+    id          Int      @id @default(autoincrement())
+    title       String
+    content     String
+    isDone      Boolean
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    priority    Priority
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+model Habit {
+    id          Int     @id @default(autoincrement())
+    title       String
+    details     String
+    createdAt   DateTime @default(now())
+    achieved    Boolean
+    startDate   DateTime
+    endDate     DateTime
+}
