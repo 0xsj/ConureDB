@@ -1,0 +1,27 @@
+{
+  "name": "@remarkable/db",
+  "version": "0.1.0",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "license": "MIT",
+  "prisma": {
+    "seed": "ts-node ./prisma/seed.ts"
+  },
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "with-env": "dotenv -e ../../.env --",
+    "dev": "pnpm with-env prisma studio --port 5556",
+    "db-push": "pnpm with-env prisma db push",
+    "db-generate": "pnpm with-env prisma generate",
+    "seed": "pnpm with-env prisma db seed"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.6.1"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "dotenv-cli": "^6.0.0",
+    "prisma": "^4.6.1",
+    "typescript": "^4.9.3"
+  }
+}
