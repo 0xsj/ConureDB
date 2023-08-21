@@ -18,31 +18,6 @@ export const HeaderBar: React.FC = () => {
       width="100%"
       zIndex={1}
       px={"2xl"}
-    >
-      <Flex row>
-        <IconButton
-          //@ts-expect-error
-          onPress={() => navigation.navigate("profile")}
-          name="user"
-          color="grey"
-          size="10"
-        />
-      </Flex>
-
-      <Flex row>
-        <IconButton
-          //@ts-expect-error
-          onPress={() => navigation.navigate("analytics")}
-          name="bell"
-          size="10"
-          color="grey"
-        />
-        <IconButton
-          onPress={() => console.log("add")}
-          name="plus"
-          color="grey"
-        />
-      </Flex>
-    </Flex>
+    ></Flex>
   );
 };
