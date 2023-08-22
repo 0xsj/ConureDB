@@ -1,7 +1,7 @@
-// @ts-nocheck
+//@ts-nocheck
+import React, { Component } from "react";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
 import dayjs from "dayjs";
-import React, { ReactElement } from "react";
-import Measure, { BoundingRect } from "react-measure";
 
 interface Props {
   weekNames?: string[];
@@ -20,13 +20,13 @@ interface State {
   maxWidth: number;
 }
 
-export default class ContributionChart extends React.Component<Props, State> {
+class ContributionChart extends Component<Props, State> {
   monthLabelHeight: number;
   weekLabelWidth: number;
   panelSize: number;
   panelMargin: number;
 
-  constructor(props: any) {
+  constructor(props: Props) {
     super(props);
 
     this.monthLabelHeight = 15;
@@ -37,7 +37,20 @@ export default class ContributionChart extends React.Component<Props, State> {
     this.state = {
       columns: 53,
       maxWidth: 53,
+      calendarData: [], // Calendar data will be stored here
     };
+  }
+
+  componentDidMount() {
+    // Fetch GitHub contribution data or provide it as a prop
+
+    // Calculate calendar data and update state
+    const calendarData = this.makeChartData(
+      this.props.values,
+      this.props.until,
+      this.state.columns,
+    );
+    this.setState({ calendarData });
   }
 
   getPanelPosition(row: number, col: number) {
@@ -49,7 +62,7 @@ export default class ContributionChart extends React.Component<Props, State> {
   }
 
   makeChartData(
-    history: { [k: string]: number },
+    history: { [date: string]: number },
     lastDay: string,
     columns: number,
   ) {
@@ -80,148 +93,25 @@ export default class ContributionChart extends React.Component<Props, State> {
   }
 
   render() {
-    const columns = this.state.columns;
-    const values = this.props.values;
-    const until = this.props.until;
-
-    // TODO: More sophisticated typing
-    if (
-      this.props.panelColors == undefined ||
-      this.props.weekNames == undefined ||
-      this.props.monthNames == undefined
-    ) {
-      return;
-    }
-
-    const contributions = this.makeChartData(values, until, columns);
-    const innerDom: ReactElement[] = [];
-
-    // panels
-    for (var i = 0; i < columns; i++) {
-      for (let j = 0; j < 7; j++) {
-        const contribution = contributions[i][j];
-        if (contribution === null) continue;
-        const pos = this.getPanelPosition(i, j);
-        const numOfColors = this.props.panelColors.length;
-        const color =
-          contribution.value >= numOfColors
-            ? this.props.panelColors[numOfColors - 1]
-            : this.props.panelColors[contribution.value];
-        const dom = (
-          <rect
-            key={"panel_key_" + i + "_" + j}
-            x={pos.x}
-            y={pos.y}
-            width={this.panelSize}
-            height={this.panelSize}
-            fill={color}
-            {...this.props.panelAttributes}
-          />
-        );
-        innerDom.push(dom);
-      }
-    }
-
-    // week texts
-    for (var i = 0; i < this.props.weekNames.length; i++) {
-      const textBasePos = this.getPanelPosition(0, i);
-      const dom = (
-        <text
-          key={"week_key_" + i}
-          style={{
-            fontSize: 9,
-            alignmentBaseline: "central",
-            fill: "#AAA",
-          }}
-          x={textBasePos.x - this.panelSize / 2 - 2}
-          y={textBasePos.y + this.panelSize / 2}
-          textAnchor={"middle"}
-          {...this.props.weekLabelAttributes}
-        >
-          {this.props.weekNames[i]}
-        </text>
-      );
-      innerDom.push(dom);
-    }
-
-    // month texts
-    let prevMonth = -1;
-    for (var i = 0; i < columns; i++) {
-      const c = contributions[i][0];
-      if (c === null) continue;
-      if (columns > 1 && i == 0 && c.month != contributions[i + 1][0]?.month) {
-        // skip first month name to avoid text overlap
-        continue;
-      }
-      if (c.month != prevMonth) {
-        const textBasePos = this.getPanelPosition(i, 0);
-        innerDom.push(
-          <text
-            key={"month_key_" + i}
-            style={{
-              fontSize: 10,
-              alignmentBaseline: "central",
-              fill: "#AAA",
-            }}
-            x={textBasePos.x + this.panelSize / 2}
-            y={textBasePos.y - this.panelSize / 2 - 2}
-            textAnchor={"middle"}
-            {...this.props.monthLabelAttributes}
-          >
-            {this.props.monthNames[c.month]}
-          </text>,
-        );
-      }
-      prevMonth = c.month;
-    }
+    const { weekNames, monthNames, panelColors } = this.props;
+    const { calendarData } = this.state;
 
     return (
-      <Measure bounds onResize={(rect) => this.updateSize(rect.bounds)}>
-        {({ measureRef }: any) => (
-          <div ref={measureRef} style={{ width: "100%" }}>
-            <svg
-              style={{
-                fontFamily:
-                  "Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif",
-                width: "100%",
-              }}
-              height="110"
-            >
-              {innerDom}
-            </svg>
-          </div>
-        )}
-      </Measure>
+      <View style={styles.container}>
+        {/* Render your calendar UI here using calendarData, weekNames, and monthNames */}
+        {/* You may use View, Text, and other React Native components */}
+      </View>
     );
-  }
-
-  updateSize(size?: BoundingRect) {
-    if (!size) return;
-
-    const visibleWeeks = Math.floor((size.width - this.weekLabelWidth) / 13);
-    this.setState({
-      columns: Math.min(visibleWeeks, this.state.maxWidth),
-    });
   }
 }
 
-// @ts-ignore
-ContributionChart.defaultProps = {
-  weekNames: ["", "M", "", "W", "", "F", ""],
-  monthNames: [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ],
-  panelColors: ["#EEE", "#DDD", "#AAA", "#444"],
-  dateFormat: "YYYY-MM-DD",
-};
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    // Add other styling as needed for your calendar
+  },
+});
+
+export default ContributionChart;
