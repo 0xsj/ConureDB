@@ -1,6 +1,6 @@
 //@ts-nocheck
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { View, Text, Dimensions, StyleSheet } from "react-native";
 import dayjs from "dayjs";
 
 interface Props {
@@ -45,7 +45,7 @@ class ContributionChart extends Component<Props, State> {
     // Fetch GitHub contribution data or provide it as a prop
 
     // Calculate calendar data and update state
-    const calendarData = this.makeChartData(
+    const calendarData = this.makeCalendarData(
       this.props.values,
       this.props.until,
       this.state.columns,
@@ -61,7 +61,7 @@ class ContributionChart extends Component<Props, State> {
     };
   }
 
-  makeChartData(
+  makeCalendarData(
     history: { [date: string]: number },
     lastDay: string,
     columns: number,
@@ -98,8 +98,19 @@ class ContributionChart extends Component<Props, State> {
 
     return (
       <View style={styles.container}>
-        {/* Render your calendar UI here using calendarData, weekNames, and monthNames */}
-        {/* You may use View, Text, and other React Native components */}
+        {calendarData.map((week, rowIndex) => (
+          <View key={`week_${rowIndex}`} style={styles.weekContainer}>
+            {week.map((day, colIndex) => (
+              <View key={`day_${colIndex}`} style={styles.dayContainer}>
+                {day ? (
+                  <Text style={styles.contributionText}>{day.value}</Text>
+                ) : (
+                  <Text style={styles.emptyText}>X</Text>
+                )}
+              </View>
+            ))}
+          </View>
+        ))}
       </View>
     );
   }
@@ -107,11 +118,51 @@ class ContributionChart extends Component<Props, State> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    // Add other styling as needed for your calendar
+    flexDirection: "column", // Vertical layout
+    alignItems: "center", // Center content horizontally
+    paddingVertical: 16,
+  },
+  weekContainer: {
+    flexDirection: "row", // Horizontal layout for weeks
+    alignItems: "center", // Center content horizontally
+    marginVertical: 4,
+  },
+  dayContainer: {
+    flex: 1, // Equal width for each day
+    alignItems: "center", // Center content horizontally
+    justifyContent: "center", // Center content vertically
+    marginHorizontal: 2,
+    height: 40, // Adjust the height as needed
+    backgroundColor: "#EEE", // Default background color for empty days
+  },
+  contributionText: {
+    fontSize: 16, // Adjust the font size as needed
+    color: "#333", // Color for contribution values
+  },
+  emptyText: {
+    fontSize: 16, // Font size for empty days
+    color: "#AAA", // Color for empty days
   },
 });
+
+ContributionChart.defaultProps = {
+  weekNames: ["", "M", "", "W", "", "F", ""],
+  monthNames: [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ],
+  panelColors: ["#EEE", "#DDD", "#AAA", "#444"],
+  dateFormat: "YYYY-MM-DD",
+};
 
 export default ContributionChart;
