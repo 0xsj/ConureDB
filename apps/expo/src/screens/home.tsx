@@ -1,6 +1,5 @@
 import React from "react";
 import { Flex, Screen } from "../components";
-import { trpc } from "../utils/trpc";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/navigation";
 import { HeaderBar, BottomTab } from "../components";

@@ -4,7 +4,7 @@ import { StatusBarStyle } from "react-native";
 
 export const p = {
   white: "#FFFFFF",
-  black: "#0C0D0F",
+  black: "#181818",
   primary: "#2C66FF",
   negative: "#E01A00",
   warning: "#FFC042",
@@ -56,6 +56,8 @@ export const p = {
   lemon: "#FFF970",
   navy: "#111C2E",
   navyTransparent: "rgba(17, 28, 46, 0.1)",
+  orange: "#FE6B44",
+  darkTeal: "#098AB5",
 };
 
 export const theme: Theme = createTheme({
@@ -70,7 +72,7 @@ export const theme: Theme = createTheme({
     positive: p.positive,
 
     $foreground: p.white,
-    $background: p.navy,
+    $background: p.black,
     // $teal: p.teal,
     // $yellow: p.lemon,
     // $lightBlue: p.lightBlue,

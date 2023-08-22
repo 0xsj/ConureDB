@@ -59,6 +59,9 @@ const p = {
   lemon: "#FFF970",
   navy: "#111C2E",
   navyTransparent: "rgba(17, 28, 46, 0.1)",
+  orange: "#FE6B44",
+  darkTeal: "#098AB5",
+  slate: "#2E2E2E",
 };
 
 const theme = createTheme({
@@ -99,6 +102,7 @@ const theme = createTheme({
     $yellow: p.lemon,
     $lightBlue: p.lightBlue,
     transparent: p.navyTransparent,
+    $slate: p.slate,
   },
   borderRadii: {
     xxs: 4,
