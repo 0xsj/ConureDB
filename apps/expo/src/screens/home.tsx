@@ -5,6 +5,7 @@ import { RootStackParamList } from "../navigation/navigation";
 import { HeaderBar, BottomTab } from "../components";
 import { ContributionGraph } from "react-native-chart-kit";
 import { Calendar } from "../components/charts/calendar/calendar";
+import CalendarListScreen from "../components/charts/calendar/calenderList";
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList> & {
   children?: React.ReactNode;
 };
@@ -35,7 +36,8 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
     <Screen bg="$background" edges={["top"]}>
       <HeaderBar />
       <Flex grow justifyContent={"center"}>
-        <Calendar />
+        {/* <Calendar /> */}
+        <CalendarListScreen />
       </Flex>
       <BottomTab />
     </Screen>

@@ -15,16 +15,16 @@ export const Calendar = () => {
           selectedDayBackgroundColor: "#00adf5",
           selectedDayTextColor: "#ffffff",
           todayTextColor: "#00adf5",
-          "stylesheet.day.basic": {
-            base: {
-              width: 42,
-              height: 42,
-              alignItems: "center",
-              borderWidth: 1,
-              borderColor: "black",
-              backgroundColor: "red",
-            },
-          },
+          // "stylesheet.day.basic": {
+          //   base: {
+          //     width: 42,
+          //     height: 42,
+          //     alignItems: "center",
+          //     borderWidth: 1,
+          //     borderColor: "black",
+          //     backgroundColor: "red",
+          //   },
+          // },
           // "stylesheet.calendar.header": {
           //   week: {
           //     marginTop: 20,
