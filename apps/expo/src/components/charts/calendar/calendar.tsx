@@ -1,6 +1,7 @@
 import { Flex } from "../../layout";
 import { Calendar as NativeCalendar } from "react-native-calendars";
 import moment from "moment";
+import { View, Text } from "react-native";
 
 export const Calendar = () => {
   const today = moment().toString();
@@ -9,12 +10,33 @@ export const Calendar = () => {
     <Flex>
       <NativeCalendar
         style={{}}
+        dayComponent={({ date, state }) => {
+          return (
+            <View
+              style={{
+                width: 42,
+                height: 42,
+                backgroundColor: "blue",
+              }}
+            >
+              <Text
+                style={{
+                  textAlign: "center",
+                  color: state === "disabled" ? "gray" : "black",
+                }}
+              >
+                {date?.day}
+              </Text>
+            </View>
+          );
+        }}
         theme={{
           calendarBackground: "transparent",
           textSectionTitleColor: "#b6c1cd",
           selectedDayBackgroundColor: "#00adf5",
           selectedDayTextColor: "#ffffff",
           todayTextColor: "#00adf5",
+
           // "stylesheet.day.basic": {
           //   base: {
           //     width: 42,
