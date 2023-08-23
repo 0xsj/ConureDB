@@ -4,14 +4,15 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/navigation";
 import { HeaderBar, BottomTab } from "../components";
 import { ContributionGraph } from "react-native-chart-kit";
+import { Calendar } from "../components/charts/calendar/calendar";
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList> & {
   children?: React.ReactNode;
 };
 
 export function HomeScreen({ navigation }: HomeScreenProps) {
   const chartConfig = {
-    backgroundGradientFrom: "#ffffff", // Start color for the background gradient
-    backgroundGradientTo: "#ffffff", // End color for the background gradient
+    // backgroundGradientFrom: "red", // Start color for the background gradient
+    // backgroundGradientTo: "red", // End color for the background gradient
     color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`, // Text color
     strokeWidth: 2, // Width of the border around each square
     decimalPlaces: 0, // Number of decimal places to round the text to (0 means no decimal places)
@@ -33,16 +34,8 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
   return (
     <Screen bg="$background" edges={["top"]}>
       <HeaderBar />
-      <Flex grow centered>
-        {/* @ts-ignore */}
-        <ContributionGraph
-          values={commitsData}
-          endDate={new Date("2017-04-01")}
-          numDays={105}
-          width={500}
-          height={220}
-          chartConfig={chartConfig}
-        />
+      <Flex grow justifyContent={"center"}>
+        <Calendar />
       </Flex>
       <BottomTab />
     </Screen>
