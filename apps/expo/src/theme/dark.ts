@@ -4,7 +4,7 @@ import { StatusBarStyle } from "react-native";
 
 export const p = {
   white: "#FFFFFF",
-  black: "#181818",
+  black: "#000000",
   primary: "#2C66FF",
   negative: "#E01A00",
   warning: "#FFC042",
@@ -33,7 +33,7 @@ export const p = {
   $warningLight1: "#FFD175",
   $warningLight2: "#FFE2A8",
   $warningLight3: "#FFF7E6",
-  $black: "#141316",
+  $surface: "#141316",
   $white: "#FFFFFF",
   $grey1: "#383D48",
   $grey2: "#212329",

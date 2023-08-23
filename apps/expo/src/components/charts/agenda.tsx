@@ -33,8 +33,8 @@ export default class AgendaScreen extends Component<State> {
         showClosingKnob={true}
         monthFormat={"yyyy MM"}
         theme={{
-          agendaKnobColor: "#768390",
-          calendarBackground: "#2d333b",
+          agendaKnobColor: "red",
+          calendarBackground: "#000000",
         }}
         // renderDay={this.renderDay}
         // hideExtraDays={false}
