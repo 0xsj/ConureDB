@@ -31,7 +31,7 @@ export const Calendar: React.FC = () => {
           );
         }}
         theme={{
-          calendarBackground: "transparent",
+          calendarBackground: "white",
           textSectionTitleColor: "#b6c1cd",
           selectedDayBackgroundColor: "#00adf5",
           selectedDayTextColor: "#ffffff",

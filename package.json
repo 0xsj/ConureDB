@@ -7,6 +7,7 @@
     "db-generate": "turbo db-generate",
     "db-push": "turbo db-push",
     "dev": "turbo dev --parallel",
+    "dev:ios": "cd apps/expo && pnpm run start",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo lint",
     "FIXME:lint": "turbo lint && manypkg check",
