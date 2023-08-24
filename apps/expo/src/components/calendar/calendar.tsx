@@ -1,9 +1,9 @@
-import { Flex } from "../../layout";
+import { Flex } from "../layout";
 import { Calendar as NativeCalendar } from "react-native-calendars";
 import moment from "moment";
 import { View, Text } from "react-native";
 
-export const Calendar = () => {
+export const Calendar: React.FC = () => {
   const today = moment().toString();
   console.log(today);
   return (

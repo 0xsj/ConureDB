@@ -1,6 +1,9 @@
 import React, { useState, useMemo, useCallback } from "react";
 import { StyleSheet, Text, View, TextStyle } from "react-native";
-import { CalendarList, DateData } from "react-native-calendars";
+import {
+  CalendarList as NativeCalendarList,
+  DateData,
+} from "react-native-calendars";
 
 const RANGE = 24;
 const initialDate = "2022-07-05";
@@ -11,7 +14,7 @@ interface Props {
   horizontalView?: boolean;
 }
 
-const CalendarListScreen = (props: Props) => {
+export const CalendarList = (props: Props) => {
   const { horizontalView } = props;
   const [selected, setSelected] = useState(initialDate);
   const marked = useMemo(() => {
@@ -40,7 +43,7 @@ const CalendarListScreen = (props: Props) => {
   }, []);
 
   return (
-    <CalendarList
+    <NativeCalendarList
       current={initialDate}
       pastScrollRange={RANGE}
       futureScrollRange={RANGE}
@@ -98,8 +101,6 @@ function renderCustomHeader(date: any) {
     </View>
   );
 }
-
-export default CalendarListScreen;
 
 const styles = StyleSheet.create({
   header: {

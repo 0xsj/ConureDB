@@ -9,10 +9,8 @@ const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
   slug: "remarkable-mobile",
   version: "1.0.0",
   orientation: "portrait",
-  icon: "./assets/icon.png",
   userInterfaceStyle: "light",
   splash: {
-    image: "./assets/icon.png",
     resizeMode: "contain",
     backgroundColor: "#2e026d",
   },

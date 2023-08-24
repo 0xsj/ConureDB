@@ -1,5 +1,3 @@
 // export const SplashScreen = () => {
-//   return (
-//     // <Screen></Screen>
-//   )
-// }
+//   return <Screen></Screen>;
+// };
