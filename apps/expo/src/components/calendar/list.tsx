@@ -51,35 +51,14 @@ export const CalendarList = (props: Props) => {
       markedDates={marked}
       renderHeader={!horizontalView ? renderCustomHeader : undefined}
       calendarHeight={!horizontalView ? 390 : undefined}
-      theme={!horizontalView ? theme : undefined}
+      theme={{
+        calendarBackground: "transparent",
+      }}
       horizontal={horizontalView}
       pagingEnabled={horizontalView}
       staticHeader={horizontalView}
     />
   );
-};
-
-const theme = {
-  stylesheet: {
-    calendar: {
-      header: {
-        dayHeader: {
-          fontWeight: "600",
-          color: "#48BFE3",
-        },
-      },
-    },
-  },
-  "stylesheet.day.basic": {
-    today: {
-      borderColor: "#48BFE3",
-      borderWidth: 0.8,
-    },
-    todayText: {
-      color: "#5390D9",
-      fontWeight: "800",
-    },
-  },
 };
 
 function renderCustomHeader(date: any) {

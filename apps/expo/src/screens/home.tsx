@@ -3,8 +3,10 @@ import { Flex, Screen } from "../components";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/navigation";
 import { HeaderBar, BottomTab } from "../components";
+import { CalendarList } from "../components/calendar/list";
 import { ContributionCalendar } from "../components/calendar/contribution";
-import { DonutChart } from "../components/charts/activity-ring/activity";
+import AgendaScreen from "../components/calendar/agenda";
+
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList> & {
   children?: React.ReactNode;
 };
@@ -14,10 +16,9 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
     <Screen bg="$background" edges={["top"]}>
       <HeaderBar />
       <Flex grow justifyContent={"center"}>
+        {/* <CalendarList /> */}
+        <AgendaScreen />
         {/* <ContributionCalendar /> */}
-        <DonutChart />
-        {/* <CalendarListScreen /> */}
-        {/* <AgendaScreen /> */}
       </Flex>
       <BottomTab />
     </Screen>
