@@ -6,6 +6,7 @@ import { HeaderBar, BottomTab } from "../components";
 import { CalendarList } from "../components/calendar/list";
 import { ContributionCalendar } from "../components/calendar/contribution";
 import AgendaScreen from "../components/calendar/agenda";
+import { AgendaList } from "../components/calendar/agenda-list";
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList> & {
   children?: React.ReactNode;
@@ -17,6 +18,7 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
       <HeaderBar />
       <Flex grow justifyContent={"center"}>
         {/* <CalendarList /> */}
+        {/* <AgendaList /> */}
         <AgendaScreen />
         {/* <ContributionCalendar /> */}
       </Flex>
