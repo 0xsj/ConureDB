@@ -10,30 +10,26 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-
-model Flashcard {
-    id          Int      @id @default(autoincrement())
-    title       String
-    content     String
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt   
-}
-
-
 model Todo {
-    id          Int      @id @default(autoincrement())
-    title       String
-    content     String
-    isDone      Boolean
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
-    priority    Priority
+    id              Int         @id @default(autoincrement())
+    title           String
+    content         String
+    isDone          Boolean     @default(false) 
+    dueDate         DateTime?    
+    createdAt       DateTime    @default(now())
+    updatedAt       DateTime    @updatedAt
+    notifyBefore    Int?
+    priority        Priority
 }
 
 enum Priority {
   LOW
   MEDIUM
   HIGH
+}
+
+model Notification {
+    id          Int      @id @default(autoincrement())
 }
 
 model Habit {
