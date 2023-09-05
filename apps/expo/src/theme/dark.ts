@@ -44,7 +44,7 @@ export const p = {
 
   slate00: "#1b1c1d",
   slate10: "#202225",
-  slate20: "#292c2f",
+  slate20: "rgb(21 21 21)",
   slate30: "#2e3235",
   slate40: "#35393d",
   slate100: "#767577",

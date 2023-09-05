@@ -55,7 +55,7 @@ const p = {
   systemGray2: "#636366",
   slate00: "#1b1c1d",
   slate10: "#202225",
-  slate20: "#292c2f",
+  slate20: "#191b1c",
   slate30: "#2e3235",
   slate40: "#35393d",
   slate100: "#767577",
