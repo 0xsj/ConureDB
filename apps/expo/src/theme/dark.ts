@@ -73,6 +73,7 @@ export const theme: Theme = createTheme({
 
     $foreground: p.white,
     $background: p.black,
+    $header: p.slate20,
     // $teal: p.teal,
     // $yellow: p.lemon,
     // $lightBlue: p.lightBlue,

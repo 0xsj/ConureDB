@@ -53,6 +53,13 @@ const p = {
   navy20: "#171a21",
   navy900: "#b9babc",
   systemGray2: "#636366",
+  slate00: "#1b1c1d",
+  slate10: "#202225",
+  slate20: "#292c2f",
+  slate30: "#2e3235",
+  slate40: "#35393d",
+  slate100: "#767577",
+  slate900: "#dddddd",
 
   lightBlue: "#5E8EFB",
   teal: "#9CECFD",
@@ -103,6 +110,7 @@ const theme = createTheme({
     $lightBlue: p.lightBlue,
     transparent: p.navyTransparent,
     $slate: p.slate,
+    $header: p.slate20,
   },
   borderRadii: {
     xxs: 4,

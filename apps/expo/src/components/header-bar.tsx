@@ -11,7 +11,7 @@ export const HeaderBar: React.FC = () => {
 
   return (
     <AnimatedBox position={"absolute"} top={30} right={0} left={0} px={"lg"}>
-      <AnimatedBox bg={"white"}>
+      <AnimatedBox borderRadius={"rounded"} bg={"$header"}>
         <Flex>
           <FeatherIcon name="menu" size={18} color={"grey3"} />
         </Flex>
