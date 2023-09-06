@@ -31,13 +31,3 @@ enum Priority {
 model Notification {
     id          Int      @id @default(autoincrement())
 }
-
-model Habit {
-    id          Int     @id @default(autoincrement())
-    title       String
-    details     String
-    createdAt   DateTime @default(now())
-    achieved    Boolean
-    startDate   DateTime
-    endDate     DateTime
-}

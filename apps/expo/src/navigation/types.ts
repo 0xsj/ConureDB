@@ -6,8 +6,13 @@ export type HomeStackParamList = {
   [Screens.Home]: undefined;
 };
 
+export type AddNoteStackParamList = {
+  [Screens.AddNote]: undefined;
+};
+
 export type AppStackParamList = {
   home: NavigatorScreenParams<HomeStackParamList>;
+  addNote: NavigatorScreenParams<AddNoteStackParamList>;
 };
 
 export type AppStackScreenProp<Screen extends keyof AppStackParamList> =
