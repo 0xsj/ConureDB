@@ -11,7 +11,12 @@ export const BottomTab: React.FC = () => {
       width="100%"
       height={100}
     >
-      <IconButton name="plus" size="xl" color="$lightBlue" />
+      <IconButton
+        onPress={() => console.log("111111")}
+        name="plus"
+        size="xl"
+        color="$lightBlue"
+      />
     </Flex>
   );
 };

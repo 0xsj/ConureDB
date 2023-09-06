@@ -1,6 +1,5 @@
 import light, { Theme } from "./light";
 import dark from "./dark";
-import { atom } from "jotai";
 
 export type ThemeNames = "light" | "dark";
 
@@ -24,5 +23,3 @@ export const themes: readonly ThemeMeta[] = [
 ];
 
 export type { Theme };
-
-export const activeThemeId = atom<ThemeNames>("light");
