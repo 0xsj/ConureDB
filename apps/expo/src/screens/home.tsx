@@ -1,36 +1,33 @@
 import React from "react";
-import { Flex, Screen } from "../components";
+import { Flex, Screen, Spacer } from "../components";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/navigation";
 import { HeaderBar, BottomTab } from "../components";
 import { NotePreview } from "../components/notes";
-import { Pressable, Text } from "../components/atoms";
 import { MasonryFlashList } from "@shopify/flash-list";
-import { useNavigation } from "@react-navigation/native";
+import { trpc } from "../utils/trpc";
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList> & {
   children?: React.ReactNode;
 };
 
 export function HomeScreen({ navigation }: HomeScreenProps) {
+  const noteQuery = trpc.note.all.useQuery();
+
   return (
     <Screen bg="$background" edges={["top"]}>
       <HeaderBar />
-      <Flex grow justifyContent={"center"}>
+      <Spacer height={100} />
+      <Flex grow>
         <MasonryFlashList
-          data={[1, 2, 3, 4, 5, 6]}
+          data={noteQuery.data}
           numColumns={2}
-          renderItem={({ item }) => (
-            <Text color={"white"}>{item.toString()}</Text>
-          )}
+          renderItem={({ item }) => <NotePreview item={item} />}
+          estimatedItemSize={200}
         />
       </Flex>
-      <Flex flex={1}>
-        <Pressable onPress={() => navigation.navigate("note")}>
-          <Text color={"white"}>note </Text>
-        </Pressable>
-      </Flex>
-      <BottomTab />
+
+      <BottomTab navigation={navigation} />
     </Screen>
   );
 }

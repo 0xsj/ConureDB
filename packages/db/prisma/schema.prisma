@@ -10,16 +10,16 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Todo {
+model Note {
     id              Int         @id @default(autoincrement())
     title           String
     content         String
-    isDone          Boolean     @default(false) 
+    isDone          Boolean?     @default(false) 
     dueDate         DateTime?    
-    createdAt       DateTime    @default(now())
-    updatedAt       DateTime?    @updatedAt
+    createdAt       DateTime?    @default(now())
+    updatedAt       DateTime?   @updatedAt
     notifyBefore    Int?
-    priority        Priority
+    priority        Priority?   
 }
 
 enum Priority {
@@ -29,5 +29,5 @@ enum Priority {
 }
 
 model Notification {
-    id          Int      @id @default(autoincrement())
+    notificationId          Int      @id @default(autoincrement())
 }

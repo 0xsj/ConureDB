@@ -3,14 +3,14 @@ import { z } from "zod";
 
 const Priority = z.enum(["LOW", "MEDIUM", "HIGH"]);
 
-export const todoRouter = router({
+export const noteRouter = router({
   all: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.todo.findMany();
+    return ctx.prisma.note.findMany();
   }),
   byId: publicProcedure.input(z.number()).query(({ ctx, input }) => {
-    return ctx.prisma.todo.findFirst({ where: { id: input } });
+    return ctx.prisma.note.findFirst({ where: { id: input } });
   }),
-  create: publicProcedure
+  create: protectedProcedure
     .input(
       z.object({
         title: z.string(),
@@ -20,6 +20,6 @@ export const todoRouter = router({
       }),
     )
     .mutation(({ ctx, input }) => {
-      return ctx.prisma.todo.create({ data: input });
+      return ctx.prisma.note.create({ data: input });
     }),
 });

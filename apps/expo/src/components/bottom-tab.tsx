@@ -1,7 +1,12 @@
 import { Flex } from "../components/layout";
 import { IconButton } from "./button";
 
-export const BottomTab: React.FC = () => {
+type BottomTabProps = {
+  navigation: any;
+};
+
+export const BottomTab: React.FC<BottomTabProps> = (props) => {
+  const { navigation } = props;
   return (
     <Flex
       position="absolute"
@@ -12,10 +17,10 @@ export const BottomTab: React.FC = () => {
       height={100}
     >
       <IconButton
-        onPress={() => console.log("111111")}
         name="plus"
         size="xl"
         color="$lightBlue"
+        onPress={() => navigation.navigate("note")}
       />
     </Flex>
   );
