@@ -14,7 +14,7 @@ async function main() {
     isDone: faker.datatype.boolean(),
     description: faker.lorem.sentences(),
   }));
-  await prisma.todo.createMany({ data: todos });
+  await prisma.note.createMany({ data: todos });
 
   console.log("done!");
 }
