@@ -12,7 +12,7 @@ export function NoteScreen({ navigation }: NoteScreenProps) {
   return (
     <Screen>
       <Flex>
-        <Pressable onPress={() => navigate.navigate("home")}>
+        <Pressable onPress={() => navigation.navigate("home")}>
           <Text color={"white"}>note </Text>
         </Pressable>
       </Flex>

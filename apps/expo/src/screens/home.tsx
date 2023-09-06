@@ -13,7 +13,6 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList> & {
 };
 
 export function HomeScreen({ navigation }: HomeScreenProps) {
-  const navigate = useNavigation();
   return (
     <Screen bg="$background" edges={["top"]}>
       <HeaderBar />
@@ -27,8 +26,7 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
         />
       </Flex>
       <Flex flex={1}>
-        {/* @ts-expect-error */}
-        <Pressable onPress={() => navigate.navigate("note")}>
+        <Pressable onPress={() => navigation.navigate("note")}>
           <Text color={"white"}>note </Text>
         </Pressable>
       </Flex>
