@@ -1,6 +1,6 @@
 export enum Screens {
   Home = "Home",
-  AddNote = "AddNote",
+  Note = "Note",
 }
 
 export enum Tabs {

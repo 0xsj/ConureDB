@@ -6,11 +6,11 @@ type AddNoteScreenProps = NativeStackScreenProps<RootStackParamList> & {
   children?: React.ReactNode;
 };
 
-export function AddNoteScreen({ navigation }: AddNoteScreenProps) {
+export function NoteScreen({ navigation }: AddNoteScreenProps) {
   return (
     <Screen>
       <Flex>
-        <Text>ADD NOTE SCREEN</Text>
+        <Text color={"white"}>ADD NOTE SCREEN</Text>
       </Flex>
     </Screen>
   );

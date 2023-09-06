@@ -1,10 +1,10 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { HomeScreen } from "../screens/home";
-import { AddNoteScreen } from "../screens/add-note";
+import { NoteScreen } from "../screens/note";
 
 export type RootStackParamList = {
   home: undefined;
-  addNote: undefined;
+  note: undefined;
 };
 
 const AppStack = createStackNavigator<RootStackParamList>();
@@ -13,7 +13,7 @@ export function AppNavigator() {
   return (
     <AppStack.Navigator screenOptions={navOptions.noHeader}>
       <AppStack.Screen name="home" component={HomeScreen} />
-      <AppStack.Screen name="addNote" component={AddNoteScreen} />
+      <AppStack.Screen name="note" component={NoteScreen} />
     </AppStack.Navigator>
   );
 }
