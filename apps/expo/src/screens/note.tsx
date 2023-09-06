@@ -1,16 +1,20 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Flex, Screen, Text } from "../components";
+import { Flex, Pressable, Screen, Text } from "../components";
 import { RootStackParamList } from "../navigation/navigation";
+import { useNavigation } from "@react-navigation/native";
 
-type AddNoteScreenProps = NativeStackScreenProps<RootStackParamList> & {
+type NoteScreenProps = NativeStackScreenProps<RootStackParamList> & {
   children?: React.ReactNode;
 };
 
-export function NoteScreen({ navigation }: AddNoteScreenProps) {
+export function NoteScreen({ navigation }: NoteScreenProps) {
+  const navigate = useNavigation();
   return (
     <Screen>
       <Flex>
-        <Text color={"white"}>ADD NOTE SCREEN</Text>
+        <Pressable onPress={() => navigate.navigate("home")}>
+          <Text color={"white"}>note </Text>
+        </Pressable>
       </Flex>
     </Screen>
   );
