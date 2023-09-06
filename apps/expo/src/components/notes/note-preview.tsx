@@ -12,7 +12,6 @@ export const NotePreview: React.FC<NotePreviewProps> = (props) => {
   const { item, onPress } = props;
   const maxChar = 100;
   const handlePress = useCallback(() => {
-    console.log(item.title);
     onPress(item);
   }, [onPress]);
 
