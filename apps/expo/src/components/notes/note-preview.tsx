@@ -14,8 +14,17 @@ export const NotePreview: React.FC<NotePreviewProps> = (props) => {
   };
 
   return (
-    <Flex backgroundColor={"$background"}>
-      <Text color={"$foreground"}>{item.title}</Text>
+    <Flex
+      backgroundColor={"warning"}
+      margin={"xs"}
+      flexGrow={1}
+      height={200}
+      p={"lg"}
+      borderRadius={"md"}
+    >
+      <Text color={"black"} fontWeight={"bold"} textTransform={"capitalize"}>
+        {item.title}
+      </Text>
       <Text color={"$slate"}>{trucateText(item.content, maxChar)}</Text>
     </Flex>
   );
