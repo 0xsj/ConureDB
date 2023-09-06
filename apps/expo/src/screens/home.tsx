@@ -22,7 +22,12 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
         <MasonryFlashList
           data={noteQuery.data}
           numColumns={2}
-          renderItem={({ item }) => <NotePreview item={item} />}
+          renderItem={({ item }) => (
+            <NotePreview
+              onPress={() => navigation.navigate("note")}
+              item={item}
+            />
+          )}
           estimatedItemSize={200}
         />
       </Flex>

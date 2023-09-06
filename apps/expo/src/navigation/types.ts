@@ -7,7 +7,7 @@ export type HomeStackParamList = {
 };
 
 export type AddNoteStackParamList = {
-  [Screens.Note]: undefined;
+  [Screens.Note]: { noteId: string };
 };
 
 export type AppStackParamList = {
