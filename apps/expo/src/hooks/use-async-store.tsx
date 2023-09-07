@@ -33,7 +33,11 @@ export const useAsyncStorage = ({
 
   const setNewData = async (value: unknown) => {
     try {
-    } catch {}
+      await AsyncStorage.setItem(key as string, JSON.stringify(value));
+      setData(value);
+    } catch (error) {
+      console.error(`setNewData ${key} error: `, error);
+    }
   };
   const removeData = async () => {
     try {
@@ -44,6 +48,13 @@ export const useAsyncStorage = ({
   };
   const clearData = async () => {
     try {
-    } catch {}
+      await AsyncStorage.clear();
+    } catch (error) {
+      console.error(`clear error:`, error);
+    }
   };
+
+  if (key !== undefined && initialValue !== undefined) {
+    return [data, setNewData, retrievedFromStorage, removeData, clearData];
+  }
 };
