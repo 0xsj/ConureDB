@@ -25,9 +25,25 @@ export const useAsyncStorage = ({
         setData(JSON.parse(value) || initialValue);
         setRetreivedFromStorage(true);
       } catch (error) {
-        console.error(`${key} error: `, error);
+        console.error(`fetchData ${key} error: `, error);
       }
     };
     fetchData();
   }, [key, initialValue]);
+
+  const setNewData = async (value: unknown) => {
+    try {
+    } catch {}
+  };
+  const removeData = async () => {
+    try {
+      await AsyncStorage.removeItem(key as string);
+    } catch (error) {
+      console.error(`removeData ${key} error: `, error);
+    }
+  };
+  const clearData = async () => {
+    try {
+    } catch {}
+  };
 };
