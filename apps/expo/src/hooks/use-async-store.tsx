@@ -15,6 +15,7 @@ export const useAsyncStorage = ({
   const [data, setData] = React.useState(initialValue);
   const [retrievedFromStorage, setRetreivedFromStorage] = React.useState(false);
 
+  /** */
   React.useEffect(() => {
     const fetchData = async () => {
       try {
