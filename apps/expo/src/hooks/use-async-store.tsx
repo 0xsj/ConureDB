@@ -15,6 +15,7 @@ export const useAsyncStorage = ({
   const [data, setData] = React.useState(initialValue);
   const [retrievedFromStorage, setRetreivedFromStorage] = React.useState(false);
 
+  /** */
   React.useEffect(() => {
     const fetchData = async () => {
       try {
@@ -77,5 +78,9 @@ export const useAsyncStorage = ({
       clearData,
       clearAppData,
     ];
+  } else if (key !== undefined) {
+    return [removeData, clearAppData];
+  } else {
+    return [clearData];
   }
 };
