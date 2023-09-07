@@ -2,7 +2,6 @@
 
 import { atom } from "jotai";
 import { Theme, themes, ThemeNames } from "./theme";
-
 /**
  * header bar
  */
