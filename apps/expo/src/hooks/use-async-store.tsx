@@ -54,7 +54,28 @@ export const useAsyncStorage = ({
     }
   };
 
+  /**
+   * clear will remove everything, libraries. etc. per docs recommendation
+   * 1. get all keys
+   * 2. multiRemove said all keys
+   */
+  const clearAppData = async () => {
+    try {
+      const keys: readonly string[] = await AsyncStorage.getAllKeys();
+      await AsyncStorage.multiRemove(keys);
+    } catch (error) {
+      console.error("error clearing app data");
+    }
+  };
+
   if (key !== undefined && initialValue !== undefined) {
-    return [data, setNewData, retrievedFromStorage, removeData, clearData];
+    return [
+      data,
+      setNewData,
+      retrievedFromStorage,
+      removeData,
+      clearData,
+      clearAppData,
+    ];
   }
 };
