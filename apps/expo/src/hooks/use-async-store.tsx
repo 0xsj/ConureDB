@@ -77,5 +77,9 @@ export const useAsyncStorage = ({
       clearData,
       clearAppData,
     ];
+  } else if (key !== undefined) {
+    return [removeData, clearAppData];
+  } else {
+    return [clearData];
   }
 };
