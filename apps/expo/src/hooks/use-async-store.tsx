@@ -1,11 +1,33 @@
-import { useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage, {
+  AsyncStorageStatic,
+} from "@react-native-async-storage/async-storage";
+import React from "react";
 
-type Props = {
+type UseAsyncStorageProps = {
   key?: string;
-  initialValue: unknown;
+  initialValue?: unknown;
 };
 
-export const useAsyncStorage = () => {
-  const [data, setData] = useState("");
+export const useAsyncStorage = ({
+  key,
+  initialValue,
+}: UseAsyncStorageProps) => {
+  const [data, setData] = React.useState(initialValue);
+  const [retrievedFromStorage, setRetreivedFromStorage] = React.useState(false);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const value = await AsyncStorage.getItem(key as string);
+        if (!value) {
+          return;
+        }
+        setData(JSON.parse(value) || initialValue);
+        setRetreivedFromStorage(true);
+      } catch (error) {
+        console.error(`${key} error: `, error);
+      }
+    };
+    fetchData();
+  }, [key, initialValue]);
 };
