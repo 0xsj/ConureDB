@@ -2,7 +2,7 @@ import React from "react";
 import { Flex, Screen, Spacer } from "../components";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/navigation";
-import { HeaderBar, BottomTab } from "../components";
+import { SearchBar, BottomTab } from "../components";
 import { NotePreview } from "../components/notes";
 import { MasonryFlashList } from "@shopify/flash-list";
 import { trpc } from "../utils/trpc";
@@ -12,15 +12,13 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList> & {
 };
 
 export function HomeScreen({ navigation }: HomeScreenProps) {
-  const noteQuery = trpc.note.all.useQuery();
-
+  console.log(navigation);
   return (
     <Screen bg="$background" edges={["top"]}>
-      <HeaderBar />
       <Spacer height={100} />
       <Flex grow>
         <MasonryFlashList
-          data={noteQuery.data}
+          data={[]}
           numColumns={2}
           renderItem={({ item }) => (
             <NotePreview
@@ -31,8 +29,7 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
           estimatedItemSize={200}
         />
       </Flex>
-
-      <BottomTab navigation={navigation} />
+      <SearchBar navigation={navigation} />
     </Screen>
   );
 }

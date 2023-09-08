@@ -10,7 +10,12 @@ import { Theme } from "../theme";
 import { useTheme } from "@shopify/restyle";
 import { IconButton } from "./button";
 
-export const HeaderBar: React.FC = () => {
+type SearchBarProps = {
+  navigation: any;
+};
+
+export const SearchBar: React.FC<SearchBarProps> = (props) => {
+  const { navigation } = props;
   const [searchQuery, setSearchQuery] = useAtom(searchQueryAtom);
   const [searchInputHasFocus, setSearchInputHasFocus] = useAtom(
     searchInputHasFocusAtom,
@@ -48,7 +53,7 @@ export const HeaderBar: React.FC = () => {
     <AnimatedBox style={safeAreaStyle}>
       <AnimatedBox
         bg={"$header"}
-        top={safeAreaInsets.top}
+        top={-safeAreaInsets.top}
         mx={"sm"}
         borderRadius={"rounded"}
         px={"sm"}
@@ -74,7 +79,7 @@ export const HeaderBar: React.FC = () => {
         </AnimatedBox>
         <AnimatedBox flexDirection={"row"}>
           <IconButton name="more-vertical" />
-          <IconButton name="user" />
+          <IconButton onPress={() => navigation.navigate("note")} name="plus" />
         </AnimatedBox>
       </AnimatedBox>
     </AnimatedBox>
