@@ -6,13 +6,15 @@ import { SearchBar, BottomTab } from "../components";
 import { NotePreview } from "../components/notes";
 import { MasonryFlashList } from "@shopify/flash-list";
 import { trpc } from "../utils/trpc";
+import { useAsyncStorage } from "../hooks/use-async-store";
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList> & {
   children?: React.ReactNode;
 };
 
 export function HomeScreen({ navigation }: HomeScreenProps) {
-  console.log(navigation);
+  const [data] = useAsyncStorage({ key: "note" });
+  console.log(data);
   return (
     <Screen bg="$background" edges={["top"]}>
       <Spacer height={100} />

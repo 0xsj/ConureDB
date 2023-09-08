@@ -10,6 +10,8 @@ import theme from "./theme/dark";
 import { NavigationContainer } from "@react-navigation/native";
 import { AppNavigator } from "./navigation/navigation";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { Provider as JotaiProvider } from "jotai";
+import { useAsyncStorage } from "./hooks/use-async-store";
 
 function NavStack() {
   return (
@@ -27,19 +29,21 @@ export const App = () => {
   const isDarkMode = false;
   return (
     <SafeAreaProvider>
-      <ClerkProvider
-        publishableKey={Constants.expoConfig?.extra?.CLERK_PUBLISHABLE_KEY}
-        tokenCache={tokenCache}
-      >
-        <TRPCProvider>
-          <ThemeProvider theme={theme}>
-            <StatusBar
-              barStyle={isDarkMode ? "dark-content" : "light-content"}
-            />
-            <AppInner />
-          </ThemeProvider>
-        </TRPCProvider>
-      </ClerkProvider>
+      <JotaiProvider>
+        <ClerkProvider
+          publishableKey={Constants.expoConfig?.extra?.CLERK_PUBLISHABLE_KEY}
+          tokenCache={tokenCache}
+        >
+          <TRPCProvider>
+            <ThemeProvider theme={theme}>
+              <StatusBar
+                barStyle={isDarkMode ? "dark-content" : "light-content"}
+              />
+              <AppInner />
+            </ThemeProvider>
+          </TRPCProvider>
+        </ClerkProvider>
+      </JotaiProvider>
     </SafeAreaProvider>
   );
 };
