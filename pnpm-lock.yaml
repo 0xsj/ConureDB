@@ -54,7 +54,7 @@ importers:
         specifier: '*'
         version: link:../../packages/api
       '@shopify/flash-list':
-        specifier: ^1.4.0
+        specifier: 1.4.0
         version: 1.4.0(@babel/runtime@7.19.0)(react-native@0.71.8)(react@18.2.0)
       '@shopify/react-native-skia':
         specifier: 0.1.172
@@ -81,19 +81,19 @@ importers:
         specifier: ^48.0.6
         version: 48.0.6(@babel/core@7.22.15)
       expo-auth-session:
-        specifier: ^4.0.3
+        specifier: ~4.0.3
         version: 4.0.3(expo@48.0.6)
       expo-random:
         specifier: ~13.1.1
         version: 13.1.2(expo@48.0.6)
       expo-secure-store:
-        specifier: ^12.1.1
+        specifier: ~12.1.1
         version: 12.1.1(expo@48.0.6)
       expo-status-bar:
         specifier: ~1.4.4
         version: 1.4.4
       expo-web-browser:
-        specifier: ^12.1.1
+        specifier: ~12.1.1
         version: 12.1.1(expo@48.0.6)
       jotai:
         specifier: ^2.2.3
@@ -115,7 +115,7 @@ importers:
         version: 1.1300.0(react-native@0.71.8)(react@18.2.0)
       react-native-cn-quill:
         specifier: ^0.7.18
-        version: 0.7.18(react-native-webview@13.5.1)(react-native@0.71.8)(react@18.2.0)
+        version: 0.7.18(react-native-webview@11.26.0)(react-native@0.71.8)(react@18.2.0)
       react-native-reanimated:
         specifier: 2.14.4
         version: 2.14.4(@babel/core@7.22.15)(react-native@0.71.8)(react@18.2.0)
@@ -129,8 +129,8 @@ importers:
         specifier: ~0.18.10
         version: 0.18.10(react-dom@18.2.0)(react@18.2.0)
       react-native-webview:
-        specifier: ^13.5.1
-        version: 13.5.1(react-native@0.71.8)(react@18.2.0)
+        specifier: 11.26.0
+        version: 11.26.0(react-native@0.71.8)(react@18.2.0)
       tailwind-config:
         specifier: '*'
         version: 0.1.2
@@ -9682,7 +9682,7 @@ packages:
       react-native-svg: 13.4.0(react-native@0.71.8)(react@18.2.0)
     dev: true
 
-  /react-native-cn-quill@0.7.18(react-native-webview@13.5.1)(react-native@0.71.8)(react@18.2.0):
+  /react-native-cn-quill@0.7.18(react-native-webview@11.26.0)(react-native@0.71.8)(react@18.2.0):
     resolution: {integrity: sha512-v8r6FEV3xFD+z/lEZrGIReZwmAnw7aTxyJSSmcv9O2PSHL994L4nW6nnDLXPKBG3PLfOKIkLbErQK9r6aQdXUQ==}
     peerDependencies:
       react: '*'
@@ -9691,7 +9691,7 @@ packages:
     dependencies:
       react: 18.2.0
       react-native: 0.71.8(@babel/core@7.22.15)(@babel/preset-env@7.19.3)(react@18.2.0)
-      react-native-webview: 13.5.1(react-native@0.71.8)(react@18.2.0)
+      react-native-webview: 11.26.0(react-native@0.71.8)(react@18.2.0)
     dev: false
 
   /react-native-codegen@0.71.5(@babel/preset-env@7.19.3):
@@ -9807,8 +9807,8 @@ packages:
       - encoding
     dev: false
 
-  /react-native-webview@13.5.1(react-native@0.71.8)(react@18.2.0):
-    resolution: {integrity: sha512-SZQJqFUMxYYj1xYWy1Z48WcHpqOGvbXKS5R1cnaLQY/JxefS+1NOVMqWxy1Zwmc128vqtRklES8l9Jus8tKSLg==}
+  /react-native-webview@11.26.0(react-native@0.71.8)(react@18.2.0):
+    resolution: {integrity: sha512-4T4CKRm8xlaQDz9h/bCMPGAvtkesrhkRWqCX9FDJEzBToaVUIsV0ZOqtC4w/JSnCtFKKYiaC1ReJtCGv+4mFeQ==}
     peerDependencies:
       react: '*'
       react-native: '*'
