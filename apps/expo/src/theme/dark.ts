@@ -58,6 +58,8 @@ export const p = {
   navyTransparent: "rgba(17, 28, 46, 0.1)",
   orange: "#FE6B44",
   darkTeal: "#098AB5",
+  bg: "#252525",
+  slate: "#393939",
 };
 
 export const theme: Theme = createTheme({
@@ -72,8 +74,9 @@ export const theme: Theme = createTheme({
     positive: p.positive,
 
     $foreground: p.white,
-    $background: p.black,
+    $background: p.bg,
     $header: p.slate20,
+    $slate: p.slate,
     // $teal: p.teal,
     // $yellow: p.lemon,
     // $lightBlue: p.lightBlue,
