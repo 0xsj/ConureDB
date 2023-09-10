@@ -13,9 +13,14 @@ export const Editor: React.FC = () => {
   const theme = useTheme<Theme>();
   const toolbarOptions = [
     ["bold", "italic", "underline"],
-    [{ header: 1 }],
+    [{ header: 1 }, { header: 2 }],
     [{ align: [] }],
+    [
+      { color: ["#000000", "#e60000", "#ff9900", "yellow"] },
+      { background: [] },
+    ],
   ];
+
   const toolbarStyles = {
     toolbar: {
       provider: (provided: any) => ({
