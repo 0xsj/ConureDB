@@ -71,7 +71,7 @@ export const Editor: React.FC = () => {
           <QuillToolbar
             styles={toolbarStyles}
             editor={_editor}
-            options={toolbarOptions}
+            options={"full"}
             theme="dark"
           />
         </Flex>
