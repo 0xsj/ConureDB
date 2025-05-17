@@ -1,0 +1,53 @@
+# Created .gitignore file for your Scala graph database project
+
+# Scala & SBT specific
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+project/target/
+project/project/
+.bsp/
+.scala-build/
+
+# IDE specific files
+.idea/
+.idea_modules/
+*.iml
+*.iws
+.bloop/
+.metals/
+metals.sbt
+.vscode/
+.bsp/
+
+# Compile output
+*.class
+*.log
+
+# Package files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# JVM crash logs
+hs_err_pid*
+
+# macOS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux specific
+*~
+
+# Graph database specific (for when you implement persistence)
+*.db
+data/
