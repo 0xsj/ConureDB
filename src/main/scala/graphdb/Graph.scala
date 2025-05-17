@@ -1,5 +1,6 @@
 package graphdb
 
+import Model._
 import scala.collection.mutable
 
 class Graph {
