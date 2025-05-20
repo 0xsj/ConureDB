@@ -2,7 +2,7 @@ package graphdb
 
 import Model._
 import com.typesafe.scalalogging.LazyLogging
-import _root_.graphdb.graphdb.Persistence
+import graphdb.Persistence
 
 /** Main entry point for the graph database application
   */
@@ -19,6 +19,12 @@ object Main extends LazyLogging {
     runDemo(graph, queryEngine, persistence)
 
     logger.info("ScalaGraphDB demo completed")
+  }
+
+  /** Helper to convert GraphResult to string */
+  private def resultToString[T](result: GraphResult[T]): String = result match {
+    case Success(value) => value.toString
+    case Failure(msg) => s"Failed: $msg"
   }
 
   /** Runs a demonstration of the graph database features
@@ -73,13 +79,13 @@ object Main extends LazyLogging {
     )
     val rel7 = graph.createRelationship(bob.id, projectB.id, "MANAGES", Map("priority" -> "High"))
 
-    println(s"Created relationship: ${rel1.getOrElse("Failed")}")
-    println(s"Created relationship: ${rel2.getOrElse("Failed")}")
-    println(s"Created relationship: ${rel3.getOrElse("Failed")}")
-    println(s"Created relationship: ${rel4.getOrElse("Failed")}")
-    println(s"Created relationship: ${rel5.getOrElse("Failed")}")
-    println(s"Created relationship: ${rel6.getOrElse("Failed")}")
-    println(s"Created relationship: ${rel7.getOrElse("Failed")}")
+    println(s"Created relationship: ${resultToString(rel1)}")
+    println(s"Created relationship: ${resultToString(rel2)}")
+    println(s"Created relationship: ${resultToString(rel3)}")
+    println(s"Created relationship: ${resultToString(rel4)}")
+    println(s"Created relationship: ${resultToString(rel5)}")
+    println(s"Created relationship: ${resultToString(rel6)}")
+    println(s"Created relationship: ${resultToString(rel7)}")
 
     // 3. Query operations
     println("\nQUERY OPERATIONS:")
