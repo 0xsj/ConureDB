@@ -8,9 +8,6 @@ libraryDependencies ++= Seq(
   "ch.qos.logback" % "logback-classic" % "1.4.11"
 )
 
-assembly / assemblyJarName := s"${name.value}-${version.value}.jar"
-assembly / mainClass := Some("graphdb.Main")
-
 scalacOptions ++= Seq(
   "-deprecation",
   "-feature",
